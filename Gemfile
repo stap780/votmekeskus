@@ -26,6 +26,9 @@ gem 'pg', '~> 0.18'
 gem 'mini_racer'
 gem 'unicorn'
 
+gem 'bcrypt_pbkdf', '< 2.0', :require => false
+gem 'ed25519', '~> 1.2', '>= 1.2.4'
+
 group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
