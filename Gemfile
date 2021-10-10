@@ -24,7 +24,7 @@ gem 'whenever', require: false
 gem 'figaro'
 gem 'pg', '~> 0.18'
 gem 'libv8-node', '~> 15.14', '>= 15.14.0.0'
-gem 'mini_racer'
+# gem 'mini_racer'
 gem 'unicorn'
 
 gem 'bcrypt_pbkdf', '< 2.0', :require => false
