@@ -18,12 +18,12 @@ test:
   password:
   template: template0
 
-production:
-  adapter: postgresql
-  host: localhost
-  encoding: unicode
-  database: votmekeskus_production
-  pool: 5
-  username: votmekeskus
-  password: <%= ENV['VOTMEKESKUS_DATABASE_PASSWORD'] %>
-  template: template0
+# production:
+#   adapter: postgresql
+#   host: localhost
+#   encoding: unicode
+#   database: votmekeskus_production
+#   pool: 5
+#   username: votmekeskus
+#   password: <%= ENV['VOTMEKESKUS_DATABASE_PASSWORD'] %>
+#   template: template0
