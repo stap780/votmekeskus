@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  app_type: false
+  app_address: MyString
+  bank_shop_id: MyString
+  bank_shop_id_test: MyString
+  ins_password: MyString
+  ins_success_url: MyString
+  ins_fail_url: MyString
+
+two:
+  app_type: false
+  app_address: MyString
+  bank_shop_id: MyString
+  bank_shop_id_test: MyString
+  ins_password: MyString
+  ins_success_url: MyString
+  ins_fail_url: MyString

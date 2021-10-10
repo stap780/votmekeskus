@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-5">
+    <h2>Настройка приёма оплат</h2>
+  </div>
+  <div class="col-7">
+  <% if Bank.count < 1 %>
+      <%= link_to 'Добавить настройку', new_bank_path, class: 'btn btn-outline-dark ' %>
+  <% else %>
+    <td><%= link_to 'Редактировать настройку', edit_bank_path(Bank.first), class: 'btn btn-outline-dark ' %></td>
+  <% end %>
+      </div>
+</div>
+<% if Bank.first.present? %>
+  <% @our_bank = Bank.first %>
+  <div class="row mt-5">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Общие данные</h5>
+          <div>Режим работы с банком:<% if @our_bank.app_type %> test<%else%> work<%end%></div>
+          <div>Адресс приложения: <%= @our_bank.app_address%></div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Данные для банка</h5>
+          <div class="">Тестовый shop id: <%= @our_bank.bank_shop_id_test %></div>
+          <div class="">Рабочий shop id: <%= @our_bank.bank_shop_id %></div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Данные из магазина</h5>
+          <div class="">Пароль: <%= @our_bank.ins_password %></div>
+          <div class="">Success url: <%= @our_bank.ins_success_url %></div>
+          <div class="">Fail url: <%= @our_bank.ins_fail_url %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+<%end%>

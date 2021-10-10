@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shop_id: MyString
+  amount: 9.99
+  transaction_id: MyString
+  key: MyString
+  description: MyString
+  order_id: MyString
+  phone: MyString
+  email: MyString
+  signature: MyString
+  status: MyString
+  ip: MyString
+
+two:
+  shop_id: MyString
+  amount: 9.99
+  transaction_id: MyString
+  key: MyString
+  description: MyString
+  order_id: MyString
+  phone: MyString
+  email: MyString
+  signature: MyString
+  status: MyString
+  ip: MyString

@@ -1,0 +1,11 @@
+<td><%= order.transaction_id %></td>
+<td><%= order.amount %></td>
+<td><%= order.description %></td>
+<td><%= order.order_id %></td>
+<td><%= order.phone %></td>
+<td><%= order.email %></td>
+<td><%= order.status %></td>
+<td><%= order.ip %></td>
+<td><%= link_to '<span class="oi oi-eye"></span>'.html_safe, order %></td>
+<td><%= link_to '<span class="oi oi-pencil"></span>'.html_safe, edit_order_path(order) %></td>
+<td><%= link_to '<span class="oi oi-trash"></span>'.html_safe, order, method: :delete, data: { confirm: 'Are you sure?' } %></td>

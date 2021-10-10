@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.all
+    @search = User.ransack(params[:q])
+    @search.sorts = 'id asc' if @search.sorts.empty?
+    @users = @search.result.paginate(page: params[:page], per_page: 30)
   end
 
   def show

@@ -5,19 +5,11 @@ ruby '2.4.4'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
+
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
-group :development, :test do
-  gem 'byebug', platform: :mri
-end
-group :development do
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '~> 3.0.5'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-end
-gem 'bootstrap'
+gem 'bootstrap', '~> 5.1.0'
+
 gem 'devise'
 gem 'high_voltage'
 gem 'simple_form'
@@ -39,4 +31,13 @@ group :development do
   gem 'capistrano-rvm'
   gem 'capistrano3-unicorn'
   gem 'capistrano-rails-console'
+
+  gem 'web-console', '>= 3.3.0'
+  gem 'listen', '~> 3.0.5'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :development, :test do
+  gem 'byebug', platform: :mri
 end

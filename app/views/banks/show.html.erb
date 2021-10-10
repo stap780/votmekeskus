@@ -1,0 +1,41 @@
+
+<p>
+  <strong>App type:</strong>
+  <%= @bank.app_type %>
+</p>
+
+<p>
+  <strong>App address:</strong>
+  <%= @bank.app_address %>
+</p>
+
+<p>
+  <strong>Bank shop:</strong>
+  <%= @bank.bank_shop_id %>
+</p>
+
+<p>
+  <strong>Bank shop id test:</strong>
+  <%= @bank.bank_shop_id_test %>
+</p>
+
+<p>
+  <strong>Ins password:</strong>
+  <%= @bank.ins_password %>
+</p>
+
+<p>
+  <strong>Ins success url:</strong>
+  <%= @bank.ins_success_url %>
+</p>
+
+<p>
+  <strong>Ins fail url:</strong>
+  <%= @bank.ins_fail_url %>
+</p>
+
+
+<div class="col-3 btn-group mt-5">
+  <%= link_to 'Редактировать', edit_bank_path(@bank), class: 'btn btn-success'%>
+  <%= link_to 'Назад', banks_path, class: 'btn btn-outline-primary' %>
+</div>

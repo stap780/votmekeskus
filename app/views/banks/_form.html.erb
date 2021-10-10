@@ -1,0 +1,38 @@
+<%= simple_form_for(@bank) do |f| %>
+<%= f.error_notification %>
+<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<div class="row">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Общие данные</h5>
+        <%= f.input :app_type, wrapper_html: { class: '' }, label: 'Режим работы с банком (test)' %>
+        <%= f.input :app_address, wrapper_html: { class: '' }, label: 'Адресс приложения', input_html: { placeholder: "или IP или домен" } %>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Данные для банка</h5>
+        <%= f.input :bank_shop_id, wrapper_html: { class: '' }, label: 'Рабочий shop id' %>
+        <%= f.input :bank_shop_id_test, wrapper_html: { class: '' }, label: 'Тестовый shop id' %>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Данные из магазина</h5>
+        <%= f.input :ins_password, wrapper_html: { class: '' }, label: 'Пароль инсалес:', input_html: { type: "text", value: @bank.ins_password }  %>
+        <%= f.input :ins_success_url, wrapper_html: { class: '' }, label: 'Success url:' %>
+        <%= f.input :ins_fail_url, wrapper_html: { class: '' }, label: 'Fail url:' %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-3 btn-group mt-5">
+  <%= f.button :submit , 'Сохранить', class: 'btn btn-success'%>
+  <%= link_to 'Назад', :back, class: 'btn btn-outline-primary' %>
+</div>
+<% end %>
