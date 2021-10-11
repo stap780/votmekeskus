@@ -9,9 +9,20 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    unless @user == current_user
-      redirect_to root_path, :alert => "Access denied."
-    end
+    redirect_to root_path, alert: 'Access denied.' unless @user == current_user
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    if (User.count > 1) && !current_admin
+      @user.destroy!
+
+      respond_to do |format|
+        format.html { redirect_to users_url, notice: 'user was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to users_url, notice: 'Нельзя удалить последнего пользователя'
+    end
+  end
 end

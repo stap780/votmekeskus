@@ -4,7 +4,8 @@
       <small>Всего - <%= User.count %></small>
     <%# link_to '<span class="oi oi-trash"></span>'.html_safe, delete_selected_citilinks_path, class: 'btn btn-secondary btn-sm', id: 'deleteAll', remote: true, data: { delete_url: delete_selected_citilinks_path } %>
   </div>
-  <%= search_form_for @search, {class: 'form-inline col-9 pl-0 pr-0'} do |f| %>
+
+  <%= search_form_for @search, {class: 'form-inline col-6 pl-0 pr-0'} do |f| %>
     <div class="input-group input-group-sm">
       <%= f.search_field :name_cont_all , placeholder: 'name', class: "form-control", style: "max-width: 180px;" %>
       <%= button_tag(type: 'submit', :class => "btn btn-info") do %>

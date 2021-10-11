@@ -1,5 +1,7 @@
 <td><%= link_to user.id, edit_user_registration_path %></td>
 <td><%= user.name %></td>
 <td><%= user.email %></td>
+<td><%= user.role.name %></td>
 <td><%= link_to '<span class="oi oi-eye"></span>'.html_safe, user %></td>
-<td><%= link_to '<span class="oi oi-pencil"></span>'.html_safe, edit_user_registration_path %></td>
+<!-- <td><%# link_to '<span class="oi oi-pencil"></span>'.html_safe, edit_user_registration_path if current_admin%></td> -->
+<td><%= link_to '<span class="oi oi-trash"></span>'.html_safe, user, method: :delete, data: { confirm: 'Are you sure?' }  if current_admin%></td>
