@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    if (User.count > 1) && !current_admin
+    if (User.count > 1) && !@user.admin?
       @user.destroy!
 
       respond_to do |format|
