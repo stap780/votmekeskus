@@ -168,6 +168,38 @@ class OrdersController < ApplicationController
             }
     end
 
+    if payment_data["status"] == "COMPLETED"
+      test = Bank.first.app_type
+      search_order = test ? payment_data["paymentId"] : payment_data["reference"]
+
+      order = Order.find_by_order_id(search_order)
+      order.update!(status: 'PAID')
+      puts "payment_data PAID - "+order.id.to_s
+      password = Bank.first.ins_password
+      paid = "1"
+      signature = Digest::MD5.hexdigest(order.shop_id.to_s+";"+order.amount.to_f.to_s+";"+order.transaction_id.to_s+";"+order.key.to_s+";"+paid+";"+password)
+      data = {
+        'paid': paid,
+        'amount': order.amount.to_f,
+        'key': order.key,
+        'transaction_id': order.transaction_id,
+        'signature': signature,
+        'shop_id': order.shop_id
+        }
+
+      url = Bank.first.ins_success_url
+      RestClient.post( url, data.to_json, {:content_type => 'application/json', accept: :json}) { |response, request, result, &block|
+            case response.code
+            when 200
+              redirect_to url
+            when 302
+              redirect_to url.split('/payments').first+'/orders/'+order.key
+            else
+              response.return!(&block)
+            end
+            }
+    end
+
     if payment_data["status"] == "PENDING"
       test = Bank.first.app_type
       search_order = test ? payment_data["paymentId"] : payment_data["reference"]
