@@ -18,11 +18,11 @@ class UsersController < ApplicationController
       @user.destroy!
 
       respond_to do |format|
-        format.html { redirect_to users_url, notice: 'user was successfully destroyed.' }
+        format.html { redirect_to users_url, notice: 'Пользователь удалён' }
         format.json { head :no_content }
       end
     else
-      redirect_to users_url, notice: 'Нельзя удалить последнего пользователя'
+      redirect_to users_url, notice: 'Нельзя удалить последнего пользователя или админа'
     end
   end
 end

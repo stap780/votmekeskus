@@ -129,7 +129,7 @@ class OrdersController < ApplicationController
               redirect_to url
             when 302
              # puts response
-             redirect_to 'https://demo-themes.myinsales.ru/orders/'+order.key
+             redirect_to url.split('/payments').first+'/orders/'+order.key
             else
               response.return!(&block)
             end
@@ -161,7 +161,7 @@ class OrdersController < ApplicationController
             when 200
               redirect_to url
             when 302
-              redirect_to 'https://demo-themes.myinsales.ru/orders/'+order.key
+              redirect_to url.split('/payments').first+'/orders/'+order.key
             else
               response.return!(&block)
             end
@@ -206,7 +206,7 @@ class OrdersController < ApplicationController
               message = {status: order.status, redirect_url: url}
               #redirect_to url
             when 302
-              message = {status: order.status, redirect_url: 'https://demo-themes.myinsales.ru/orders/'+order.key}
+              message = {status: order.status, redirect_url: url.split('/payments').first+'orders/'+order.key}
             else
               response.return!(&block)
             end
