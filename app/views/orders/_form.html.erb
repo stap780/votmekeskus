@@ -2,22 +2,24 @@
 <%= simple_form_for(@order) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
+<div class="row">
+  <div class="col-6">
     <%# f.input :shop_id %>
-    <%= f.input :amount %>
     <%= f.input :transaction_id %>
+    <%= f.input :amount %>
     <%# f.input :key %>
     <%= f.input :description %>
     <%= f.input :order_id %>
     <%= f.input :phone %>
     <%= f.input :email %>
     <%# f.input :signature %>
-    <%= f.input :status %>
-    <%= f.input :ip %>
+    <%= f.input :status, collection: ['CANCELLED', 'COMPLETED', 'PENDING', 'PAID'] %>
+    <%# f.input :ip %>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="col-3 btn-group mt-5">
+    <%= f.button :submit , 'Сохранить', class: 'btn btn-success'%>
+    <%= link_to 'Назад', :back, class: 'btn btn-outline-primary' %>
   </div>
 <% end %>
