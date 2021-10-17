@@ -1,0 +1,18 @@
+
+<%= simple_form_for(@user) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<div class="row">
+  <div class="col-6">
+    <%= f.input :name %>
+    <%= f.input :email %>
+    <%= f.association :role %>
+    <%# f.input :ip %>
+  </div>
+</div>
+
+  <div class="col-3 btn-group mt-5">
+    <%= f.button :submit , 'Сохранить', class: 'btn btn-success'%>
+    <%= link_to 'Назад', :back, class: 'btn btn-outline-primary' %>
+  </div>
+<% end %>

@@ -4,9 +4,9 @@
   </div>
   <div class="col-7">
   <% if Bank.count < 1 %>
-      <%= link_to 'Добавить настройку', new_bank_path, class: 'btn btn-outline-dark ' %>
+      <%= link_to 'Добавить настройку', new_bank_path, class: 'btn btn-outline-dark ' if current_admin  %>
   <% else %>
-    <td><%= link_to 'Редактировать настройку', edit_bank_path(Bank.first), class: 'btn btn-outline-dark ' %></td>
+    <td><%= link_to 'Редактировать настройку', edit_bank_path(Bank.first), class: 'btn btn-outline-dark '  if current_admin %></td>
   <% end %>
       </div>
 </div>

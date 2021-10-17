@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user! , except: [:checkout, :paysuccess, :status, :payment]
+  before_action :authenticate_user_role!, except: [:checkout, :paysuccess, :status, :payment]
   before_action :set_order, only: %i[ show edit update destroy ]
 
   # GET /orders or /orders.json
