@@ -86,7 +86,7 @@ class OrdersController < ApplicationController
       puts "order_data - "+order_data.to_s
       order_json =  JSON.parse(params[:order_json])
       search_language = order_json['fields_values'].select{|field| field if field['handle'] == 'language' }
-      language = search_language.present? ? search_language[0]['value'] : 'ee'
+      language = search_language.present? ? search_language[0]['value'] : 'et'
       check_order = Order.find_by_order_id(order_data[:order_id])
       if check_order.present?
         check_order.update(order_data)
