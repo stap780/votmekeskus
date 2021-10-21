@@ -80,9 +80,13 @@ class OrdersController < ApplicationController
         description: params[:description],
         phone: params[:phone],
         email: params[:email],
-        signature: params[:signature]
+        signature: params[:signature],
+        ip: params[:order_json].to_s
       }
       puts "order_data - "+order_data.to_s
+      order_json =  JSON.parse(params[:order_json])
+      search_language = order_json['fields_values'].select{|field| field if field['handle'] == 'language' }
+      language = search_language.present? ? search_language[0]['value'] : 'ee'
       check_order = Order.find_by_order_id(order_data[:order_id])
       if check_order.present?
         check_order.update(order_data)
@@ -93,7 +97,7 @@ class OrdersController < ApplicationController
 
       puts order.status.to_s
       if order.status != 'PAID'
-          url = payment_url+"?shop="+bank_shop_id+"&amount="+order.amount.to_s+"&reference="+order.order_id.to_s+"&country=ee&locale=en&return_url="+return_url_data+"&cancel_url="+cancel_url_data+"&notification_url="+notification_url_data
+          url = payment_url+"?shop="+bank_shop_id+"&amount="+order.amount.to_s+"&reference="+order.order_id.to_s+"&country=ee&locale="+language+"&return_url="+return_url_data+"&cancel_url="+cancel_url_data+"&notification_url="+notification_url_data
           redirect_to url
       end
     end
@@ -112,8 +116,10 @@ class OrdersController < ApplicationController
       order.update!(status: 'CANCELLED')
       puts "payment_data CANCELLED - "+order.id.to_s
       password = Bank.first.ins_password
+      order_json = order.ip.to_s
       paid = "0"
       signature = Digest::MD5.hexdigest(order.shop_id.to_s+";"+order.amount.to_f.to_s+";"+order.transaction_id.to_s+";"+order.key.to_s+";"+paid+";"+password)
+      # signature2 = Digest::MD5.hexdigest(order.shop_id.to_s+";"+order.amount.to_f.to_s+";"+order.transaction_id.to_s+";"+order.key.to_s+";"+order.description.to_s+";"+order.order_id.to_s+";"+order.phone.to_s+";"+order.email.to_s+";"+order.ip.to_s+";"+password)
       data = {
         'paid': "0",
         'amount': order.amount.to_f,
@@ -145,8 +151,10 @@ class OrdersController < ApplicationController
       order.update!(status: 'PAID')
       puts "payment_data PAID - "+order.id.to_s
       password = Bank.first.ins_password
+      order_json = order.ip.to_s
       paid = "1"
       signature = Digest::MD5.hexdigest(order.shop_id.to_s+";"+order.amount.to_f.to_s+";"+order.transaction_id.to_s+";"+order.key.to_s+";"+paid+";"+password)
+      # signature2 = Digest::MD5.hexdigest(order.shop_id.to_s+";"+order.amount.to_f.to_s+";"+order.transaction_id.to_s+";"+order.key.to_s+";"+order.description.to_s+";"+order.order_id.to_s+";"+order.phone.to_s+";"+order.email.to_s+";"+order.ip.to_s+";"+password)
       data = {
         'paid': paid,
         'amount': order.amount.to_f,
@@ -157,6 +165,7 @@ class OrdersController < ApplicationController
         }
 
       url = Bank.first.ins_success_url
+      puts data.to_json.to_s
       RestClient.post( url, data.to_json, {:content_type => 'application/json', accept: :json}) { |response, request, result, &block|
             case response.code
             when 200
@@ -177,8 +186,10 @@ class OrdersController < ApplicationController
       order.update!(status: 'PAID')
       puts "payment_data PAID - "+order.id.to_s
       password = Bank.first.ins_password
+      order_json = order.ip.to_s
       paid = "1"
       signature = Digest::MD5.hexdigest(order.shop_id.to_s+";"+order.amount.to_f.to_s+";"+order.transaction_id.to_s+";"+order.key.to_s+";"+paid+";"+password)
+      # signature2 = Digest::MD5.hexdigest(order.shop_id.to_s+";"+order.amount.to_f.to_s+";"+order.transaction_id.to_s+";"+order.key.to_s+";"+order.description.to_s+";"+order.order_id.to_s+";"+order.phone.to_s+";"+order.email.to_s+";"+order.ip.to_s+";"+password)
       data = {
         'paid': paid,
         'amount': order.amount.to_f,
