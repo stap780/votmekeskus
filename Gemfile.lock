@@ -251,7 +251,7 @@ GEM
     websocket-extensions (0.1.5)
     whenever (1.0.0)
       chronic (>= 0.6.3)
-    will_paginate (3.0.12)
+    will_paginate (3.3.1)
 
 PLATFORMS
   ruby
@@ -287,7 +287,7 @@ DEPENDENCIES
   unicorn
   web-console (>= 3.3.0)
   whenever
-  will_paginate (~> 3.0.6)
+  will_paginate (~> 3.3)
 
 RUBY VERSION
    ruby 2.4.4p296

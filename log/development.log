@@ -1919,3 +1919,187 @@ Processing by OrdersController#index as HTML
 Completed 200 OK in 271ms (Views: 155.0ms | ActiveRecord: 38.7ms)
 
 
+Started GET "/" for ::1 at 2021-11-19 12:22:02 +0300
+  [1m[35m (6.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by VisitorsController#index as HTML
+Completed 401 Unauthorized in 16ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2021-11-19 12:22:04 +0300
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (0.7ms)
+  Rendered devise/sessions/_form.html.erb (41.9ms)
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (69.7ms)
+  Rendered layouts/_messages.html.erb (0.7ms)
+Completed 200 OK in 1695ms (Views: 1576.5ms | ActiveRecord: 78.2ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2021-11-19 14:26:55 +0300
+  [1m[35m (6.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (1.4ms)
+  Rendered devise/sessions/_form.html.erb (207.5ms)
+  Rendered devise/shared/_links.html.erb (3.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (233.5ms)
+  Rendered layouts/_messages.html.erb (0.9ms)
+Completed 200 OK in 1358ms (Views: 1309.8ms | ActiveRecord: 11.5ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-11-19 15:19:18 +0300
+  [1m[35m (3.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (1.1ms)
+  Rendered devise/sessions/_form.html.erb (202.8ms)
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (223.6ms)
+  Rendered layouts/_messages.html.erb (0.8ms)
+Completed 200 OK in 5999ms (Views: 5956.9ms | ActiveRecord: 12.0ms)
+
+
+Started GET "/orders/delivery" for ::1 at 2021-11-20 12:43:56 +0300
+  [1m[35m (8.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by OrdersController#delivery as HTML
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `role' for nil:NilClass):
+  
+app/controllers/application_controller.rb:30:in `authenticate_user_role!'
+Started GET "/orders/delivery" for ::1 at 2021-11-20 12:44:35 +0300
+Processing by OrdersController#delivery as HTML
+Completed 200 OK in 10ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-20 12:51:47 +0300
+  [1m[35m (4.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by VisitorsController#index as HTML
+Completed 401 Unauthorized in 14ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2021-11-20 12:51:47 +0300
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (0.7ms)
+  Rendered devise/sessions/_form.html.erb (39.5ms)
+  Rendered devise/shared/_links.html.erb (3.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (61.9ms)
+  Rendered layouts/_messages.html.erb (0.7ms)
+Completed 200 OK in 908ms (Views: 827.8ms | ActiveRecord: 47.6ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2021-11-20 12:52:08 +0300
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0bEg8HYotBKvQ81gu0Jf6h9Uhmciq/pok5V5EuSXPRYwl4qStYoqasWboEyid4FW69dRUQl4un44zZcBdSHm6Q==", "user"=>{"email"=>"info@votmekeskus.ee", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Войти"}
+  [1m[36mUser Load (26.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "info@votmekeskus.ee"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 68ms (ActiveRecord: 29.5ms)
+
+
+Processing by Users::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0bEg8HYotBKvQ81gu0Jf6h9Uhmciq/pok5V5EuSXPRYwl4qStYoqasWboEyid4FW69dRUQl4un44zZcBdSHm6Q==", "user"=>{"email"=>"info@votmekeskus.ee", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Войти"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (0.7ms)
+  Rendered devise/sessions/_form.html.erb (9.7ms)
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (25.3ms)
+  Rendered layouts/_messages.html.erb (0.5ms)
+Completed 200 OK in 470ms (Views: 89.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2021-11-20 12:52:20 +0300
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+FYGUzTXC2yxpAcn57brAEAqqOblc+EuD4XaNQqVrQkZcKwx93WVFNt8agv+gzW8tKl/0M6goTik3TQmmyN29g==", "user"=>{"email"=>"panaet80@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Войти"}
+  [1m[36mUser Load (6.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "panaet80@gmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 357ms (ActiveRecord: 6.7ms)
+
+
+Started GET "/" for ::1 at 2021-11-20 12:52:20 +0300
+Processing by VisitorsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering visitors/index.html.erb within layouts/application
+  Rendered visitors/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_navigation_links.html.erb (1.0ms)
+  Rendered layouts/_nav_links_for_auth.html.erb (27.1ms)
+  Rendered layouts/_navigation.html.erb (44.9ms)
+  Rendered layouts/_messages.html.erb (1.0ms)
+Completed 200 OK in 130ms (Views: 124.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/orders" for ::1 at 2021-11-20 12:52:23 +0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mRole Load (3.5ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (12.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders"[0m
+  [1m[36mOrder Load (7.6ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" ORDER BY "orders"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered orders/_order.html.erb (1.6ms)
+  Rendered orders/_order.html.erb (0.5ms)
+  Rendered orders/index.html.erb within layouts/application (64.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.9ms)
+  Rendered layouts/_nav_links_for_auth.html.erb (0.8ms)
+  Rendered layouts/_navigation.html.erb (7.4ms)
+  Rendered layouts/_messages.html.erb (0.6ms)
+Completed 200 OK in 246ms (Views: 103.2ms | ActiveRecord: 45.7ms)
+
+
+Started GET "/orders" for ::1 at 2021-11-20 12:54:04 +0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mRole Load (0.7ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders"[0m
+  [1m[36mOrder Load (2.8ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" ORDER BY "orders"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 0]]
+  Rendered orders/_order.html.erb (1.5ms)
+  Rendered orders/index.html.erb within layouts/application (50.8ms)
+Completed 500 Internal Server Error in 144ms (ActiveRecord: 27.3ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 0, expected 1)):
+    41: </div>
+    42: 
+    43: <div class="apple_pagination">
+    44: <%= will_paginate @orders %>
+    45: </div>
+  
+app/views/orders/index.html.erb:44:in `_app_views_orders_index_html_erb__78232589055029335_70224704548300'
+Started GET "/orders" for ::1 at 2021-11-20 12:58:17 +0300
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mRole Load (0.6ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders"[0m
+  [1m[36mOrder Load (0.8ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" ORDER BY "orders"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 0]]
+  Rendered orders/_order.html.erb (1.3ms)
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders"[0m
+  Rendered orders/index.html.erb within layouts/application (206.7ms)
+  Rendered layouts/_navigation_links.html.erb (1.7ms)
+  Rendered layouts/_nav_links_for_auth.html.erb (0.9ms)
+  Rendered layouts/_navigation.html.erb (18.4ms)
+  Rendered layouts/_messages.html.erb (0.7ms)
+Completed 200 OK in 1347ms (Views: 1212.8ms | ActiveRecord: 25.7ms)
+
+
+Started GET "/orders" for ::1 at 2021-11-20 12:58:30 +0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mRole Load (0.5ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders"[0m
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" ORDER BY "orders"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 50], ["OFFSET", 0]]
+  Rendered orders/_order.html.erb (1.4ms)
+  Rendered orders/_order.html.erb (0.4ms)
+  Rendered orders/index.html.erb within layouts/application (57.5ms)
+  Rendered layouts/_navigation_links.html.erb (1.5ms)
+  Rendered layouts/_nav_links_for_auth.html.erb (1.1ms)
+  Rendered layouts/_navigation.html.erb (13.6ms)
+  Rendered layouts/_messages.html.erb (2.0ms)
+Completed 200 OK in 309ms (Views: 220.3ms | ActiveRecord: 23.7ms)
+
+

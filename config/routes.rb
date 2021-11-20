@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     collection do
   		post :checkout
   		get :payment
+      get :delivery
     end
   end
   root to: 'visitors#index'

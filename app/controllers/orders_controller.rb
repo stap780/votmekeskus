@@ -1,13 +1,13 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user! , except: [:checkout, :paysuccess, :status, :payment]
-  before_action :authenticate_user_role!, except: [:checkout, :paysuccess, :status, :payment]
+  before_action :authenticate_user! , except: [:checkout, :paysuccess, :status, :payment, :delivery]
+  before_action :authenticate_user_role!, except: [:checkout, :paysuccess, :status, :payment, :delivery]
   before_action :set_order, only: %i[ show edit update destroy ]
 
   # GET /orders or /orders.json
   def index
     @search = Order.ransack(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
-    @orders = @search.result.paginate(page: params[:page], per_page: 30)
+    @orders = @search.result.paginate(page: params[:page], per_page: 50)
   end
 
   # GET /orders/1 or /orders/1.json
@@ -260,6 +260,11 @@ class OrdersController < ApplicationController
 
     render json: message
 
+  end
+
+  def delivery
+    render json: { error: false, message: 'нет такого клиента' }
+    puts "delivery params - "+params.to_s
   end
 
   private
