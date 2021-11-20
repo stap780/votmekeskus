@@ -263,8 +263,14 @@ class OrdersController < ApplicationController
   end
 
   def delivery
-    render json: { error: false, message: 'нет такого клиента' }
-    puts "delivery params - "+params.to_s
+    url = 'https://www.smartpost.ee/fi_po.json'
+    res = RestClient.get url, {content_type: :json, accept: :json}
+    data = JSON.parse(res)
+    if data.count > 0
+        render json: { items: data, message: 'получили данные' }
+      else
+        render json: { error: false, message: 'нет данных https://www.smartpost.ee/fi_po.json' }
+      end
   end
 
   private
