@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user! , except: [:checkout, :paysuccess, :status, :payment, :delivery]
-  before_action :authenticate_user_role!, except: [:checkout, :paysuccess, :status, :payment, :delivery]
+  before_action :authenticate_user! , except: [:checkout, :paysuccess, :status, :payment, :fipo, :fiapt, :place]
+  before_action :authenticate_user_role!, except: [:checkout, :paysuccess, :status, :payment, :fipo, :fiapt, :place]
   before_action :set_order, only: %i[ show edit update destroy ]
 
   # GET /orders or /orders.json
@@ -262,7 +262,29 @@ class OrdersController < ApplicationController
 
   end
 
-  def delivery
+  def place
+    url = 'https://www.smartpost.ee/places.json'
+    res = RestClient.get url, {content_type: :json, accept: :json}
+    data = JSON.parse(res)
+    if data.count > 0
+        render json: { items: data, message: 'получили данные' }
+      else
+        render json: { error: false, message: 'нет данных https://www.smartpost.ee/places.json' }
+      end
+  end
+
+  def fiapt
+    url = 'https://www.smartpost.ee/fi_apt.json'
+    res = RestClient.get url, {content_type: :json, accept: :json}
+    data = JSON.parse(res)
+    if data.count > 0
+        render json: { items: data, message: 'получили данные' }
+      else
+        render json: { error: false, message: 'нет данных https://www.smartpost.ee/fi_apt.json' }
+      end
+  end
+
+  def fipo
     url = 'https://www.smartpost.ee/fi_po.json'
     res = RestClient.get url, {content_type: :json, accept: :json}
     data = JSON.parse(res)
