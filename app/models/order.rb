@@ -61,7 +61,7 @@ def self.create_shipment_smartpost(data)
 	</report>
 	<item>
 		<barcode></barcode>
-		<reference>'+order_number+'</reference>
+		<reference>'+order_number.to_s+'</reference>
 		<content>goods</content>
 		<orderparent>string</orderparent>
 		<weight>0.5</weight>
