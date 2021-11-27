@@ -7,7 +7,9 @@ def self.send_delivery_data(data)
     delivery = data["fields_values"].select{ |field| field['name'] == 'smartpost'}[0]['value']
     est_terminal_id = delivery.include?('EE(APT)') ? delivery.split('---')[1].remove('(').remove(')') : ''
     fin_postal_code = delivery.include?('FIN(PO)') ? delivery.split('---')[1].remove('(').remove(')') : ''
+    fin_postal_code_address = delivery.include?('FIN(PO)') ? delivery.split('---').last.split(',').last.strip : ''
     fin_terminal_code = delivery.include?('FIN(APT)') ? delivery.split('---')[1].remove('(').remove(')') : ''
+    fin_terminal_code_address = delivery.include?('FIN(APT)') ? delivery.split('---').last.split(',').last.strip : ''
     if delivery.include?('EE(APT)')
     data = {
       order_number: data["number"],
@@ -18,13 +20,20 @@ def self.send_delivery_data(data)
     }
     end
     if delivery.include?('FIN(APT)')
+      url_xml = "http://iseteenindus.smartpost.ee/api/?request=destinations&country=FI&type=APT"
+      resp = RestClient.get(url_xml)
+      resp_data = Nokogiri::XML(resp)
+      puts "fin_terminal_code "+fin_terminal_code.to_s
+      puts "fin_terminal_code_address "+fin_terminal_code_address.to_s
+      search_routing_code = resp_data.xpath("//item").select{|i| i.xpath('postalcode').text == fin_terminal_code && i.xpath('address').text == fin_terminal_code_address }[0].xpath('routingcode').text
+
       data = {
         order_number: data["number"],
         client_name: data["client"]['name']+data["client"]['surname'],
         client_phone: data["client"]['phone'],
         client_email: data["client"]['email'],
-        fin_postal_code: '00104',
-        fin_terminal_code: fin_terminal_code
+        postal_code: fin_terminal_code,
+        routing_code: search_routing_code
       }
     end
     if delivery.include?('FIN(PO)')
@@ -33,8 +42,8 @@ def self.send_delivery_data(data)
         client_name: data["client"]['name']+data["client"]['surname'],
         client_phone: data["client"]['phone'],
         client_email: data["client"]['email'],
-        fin_postal_code: fin_postal_code,
-        fin_terminal_code: '3200'
+        postal_code: fin_postal_code,
+        routing_code: '3200'
       }
     end
 
@@ -47,8 +56,8 @@ def self.create_shipment_smartpost(data)
   client_phone = data[:client_phone].present? ? data[:client_phone] : '21080435'
   client_email = data[:client_email].present? ? data[:client_email] : 'test@mail.ru'
   est_terminal_id = data[:est_terminal_id].present? ? data[:est_terminal_id] : ''
-  fin_postal_code = data[:fin_postal_code].present? ? data[:fin_postal_code] : ''
-  fin_terminal_code = data[:fin_terminal_code].present? ? data[:fin_terminal_code] : ''
+  postal_code = data[:postal_code].present? ? data[:postal_code] : ''
+  routing_code = data[:routing_code].present? ? data[:routing_code] : ''
 
   add_url = "http://iseteenindus.smartpost.ee/api/?request=shipment"
   send_data_xml = '<orders>
@@ -82,8 +91,8 @@ def self.create_shipment_smartpost(data)
 		</recipient>
 		<destination>
 			<place_id>'+est_terminal_id+'</place_id>
-			<postalcode>'+fin_postal_code+'</postalcode>
-			<routingcode>'+fin_terminal_code+'</routingcode>
+			<postalcode>'+postal_code+'</postalcode>
+			<routingcode>'+routing_code+'</routingcode>
 			<street></street>
 			<house></house>
 			<apartment></apartment>
