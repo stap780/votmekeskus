@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get :place
       get :fiapt
       get :fipo
+      post :webhook
     end
   end
   root to: 'visitors#index'

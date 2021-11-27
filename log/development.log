@@ -2129,3 +2129,49 @@ Processing by VisitorsController#index as HTML
 Completed 200 OK in 2893ms (Views: 2670.9ms | ActiveRecord: 82.6ms)
 
 
+Started GET "/" for ::1 at 2021-11-26 15:18:03 +0300
+  [1m[35m (8.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by VisitorsController#index as HTML
+  [1m[36mUser Load (10.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering visitors/index.html.erb within layouts/application
+  Rendered visitors/index.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_navigation_links.html.erb (1.4ms)
+  Rendered layouts/_nav_links_for_auth.html.erb (0.9ms)
+  Rendered layouts/_navigation.html.erb (20.9ms)
+  Rendered layouts/_messages.html.erb (1.7ms)
+Completed 200 OK in 972ms (Views: 836.8ms | ActiveRecord: 80.9ms)
+
+
+Started GET "/orders" for ::1 at 2021-11-26 15:18:08 +0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mRole Load (0.9ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (23.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders"[0m
+  [1m[36mOrder Load (7.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" ORDER BY "orders"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 50], ["OFFSET", 0]]
+  Rendered orders/_order.html.erb (4.7ms)
+  Rendered orders/_order.html.erb (0.9ms)
+  Rendered orders/index.html.erb within layouts/application (89.1ms)
+  Rendered layouts/_navigation_links.html.erb (1.0ms)
+  Rendered layouts/_nav_links_for_auth.html.erb (1.0ms)
+  Rendered layouts/_navigation.html.erb (8.7ms)
+  Rendered layouts/_messages.html.erb (0.6ms)
+Completed 200 OK in 288ms (Views: 134.5ms | ActiveRecord: 64.3ms)
+
+
+Started GET "/orders/38/edit" for ::1 at 2021-11-26 15:33:41 +0300
+Processing by OrdersController#edit as HTML
+  Parameters: {"id"=>"38"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mRole Load (0.7ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (1.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+  Rendering orders/edit.html.erb within layouts/application
+  Rendered orders/_form.html.erb (446.5ms)
+  Rendered orders/edit.html.erb within layouts/application (456.0ms)
+  Rendered layouts/_navigation_links.html.erb (1.4ms)
+  Rendered layouts/_nav_links_for_auth.html.erb (1.1ms)
+  Rendered layouts/_navigation.html.erb (11.5ms)
+  Rendered layouts/_messages.html.erb (1.0ms)
+Completed 200 OK in 739ms (Views: 671.8ms | ActiveRecord: 13.8ms)
+
+

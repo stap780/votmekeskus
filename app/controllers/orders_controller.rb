@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user! , except: [:checkout, :paysuccess, :status, :payment, :fipo, :fiapt, :place]
-  before_action :authenticate_user_role!, except: [:checkout, :paysuccess, :status, :payment, :fipo, :fiapt, :place]
+  before_action :authenticate_user! , except: [:checkout, :paysuccess, :status, :payment, :fipo, :fiapt, :place, :webhook]
+  before_action :authenticate_user_role!, except: [:checkout, :paysuccess, :status, :payment, :fipo, :fiapt, :place, :webhook]
   before_action :set_order, only: %i[ show edit update destroy ]
 
   # GET /orders or /orders.json
@@ -294,6 +294,13 @@ class OrdersController < ApplicationController
         render json: { error: false, message: 'нет данных https://www.smartpost.ee/fi_po.json' }
       end
   end
+
+  def webhook
+    Order.send_delivery_data(params)
+    # flash[:notice] = 'Order was successfully downloaded'
+    # redirect_to orders_path
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
