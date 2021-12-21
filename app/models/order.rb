@@ -10,10 +10,11 @@ def self.send_delivery_data(data)
     fin_postal_code_address = delivery.include?('FIN(PO)') ? delivery.split('---').last.split(',').last.strip : ''
     fin_terminal_code = delivery.include?('FIN(APT)') ? delivery.split('---')[1].remove('(').remove(')') : ''
     fin_terminal_code_address = delivery.include?('FIN(APT)') ? delivery.split('---').last.split(',').last.strip : ''
+
     if delivery.include?('EE(APT)')
     data = {
       order_number: data["number"],
-      client_name: data["client"]['name']+data["client"]['surname'],
+      client_name: data["client"]['name'],
       client_phone: data["client"]['phone'],
       client_email: data["client"]['email'],
       est_terminal_id: est_terminal_id
@@ -29,7 +30,7 @@ def self.send_delivery_data(data)
 
       data = {
         order_number: data["number"],
-        client_name: data["client"]['name']+data["client"]['surname'],
+        client_name: data["client"]['name'],
         client_phone: data["client"]['phone'],
         client_email: data["client"]['email'],
         postal_code: fin_terminal_code,
@@ -39,7 +40,7 @@ def self.send_delivery_data(data)
     if delivery.include?('FIN(PO)')
       data = {
         order_number: data["number"],
-        client_name: data["client"]['name']+data["client"]['surname'],
+        client_name: data["client"]['name'],
         client_phone: data["client"]['phone'],
         client_email: data["client"]['email'],
         postal_code: fin_postal_code,
