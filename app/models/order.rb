@@ -163,7 +163,7 @@ def self.create_shipment_smartpost(data)
 
   #RestClient.post( add_url, send_data_xml, accept: :xml, content_type: "application/xml") { |response, request, result, &block|
   RestClient.post( new_add_url, send_data_xml_new, accept: :xml, content_type: "application/xml", "Authorization" => Rails.application.secrets.smartpost_auth ) { |response, request, result, &block|
-    case response.code
+    case response.code 
     when 200
       puts 'create_shipment_smartpost 200 - all ok'
       resp_data = Nokogiri::XML(response)
