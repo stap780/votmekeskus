@@ -60,7 +60,6 @@ class OrdersController < ApplicationController
     end
   end
 
-
   def checkout
     test = Bank.first.app_type
     bank_shop_id = test ? Bank.first.bank_shop_id_test : Bank.first.bank_shop_id
@@ -297,8 +296,6 @@ class OrdersController < ApplicationController
 
   def webhook
     Order.send_delivery_data(params)
-    # flash[:notice] = 'Order was successfully downloaded'
-    # redirect_to orders_path
   end
 
 
