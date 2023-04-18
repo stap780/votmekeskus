@@ -22,7 +22,7 @@ def self.send_delivery_data(data)
     end
     if delivery.include?('FIN(APT)')
       # url_xml = "http://iseteenindus.smartpost.ee/api/?request=destinations&country=FI&type=APT"
-      new_url_xml = "https://gateway.posti.fi/smartpost/api/ext/v1/places?country=FI&type=APT"
+      new_url_xml = "http://gateway.posti.fi/smartpost/api/ext/v1/places?country=FI&type=APT"
       # resp_old  = RestClient.get(new_url_xml)
       resp = RestClient.get(new_url_xml, 'Authorization' => Rails.application.secrets.smartpost_auth )
       resp_data = Nokogiri::XML(resp)
@@ -63,7 +63,7 @@ def self.create_shipment_smartpost(data)
   routing_code = data[:routing_code].present? ? data[:routing_code] : ''
 
   add_url = "http://iseteenindus.smartpost.ee/api/?request=shipment"
-  new_add_url = "https://gateway.posti.fi/smartpost/api/ext/v1/orders"
+  new_add_url = "http://gateway.posti.fi/smartpost/api/ext/v1/orders"
   send_data_xml = '<orders>
     <authentication>
       <user>'+Rails.application.secrets.smartpost_user+'</user>

@@ -15,6 +15,9 @@
 
 
 # Ignore all logfiles and tempfiles.
+log/*
+tmp/*
+config/secrets.yml
 /log/*
 /tmp/*
 !/log/.keep
@@ -26,6 +29,7 @@
 .byebug_history
 
 # Ignore application configuration
+config/application.yml
 /config/application.yml
 
 # Mac finder artifacts
