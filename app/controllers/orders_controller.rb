@@ -258,7 +258,6 @@ class OrdersController < ApplicationController
     end
 
     render json: message
-
   end
 
   def place
@@ -291,7 +290,7 @@ class OrdersController < ApplicationController
         render json: { items: data, message: 'получили данные' }
       else
         render json: { error: false, message: 'нет данных https://www.smartpost.ee/fi_po.json' }
-      end
+    end
   end
 
   def webhook
