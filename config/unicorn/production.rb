@@ -3,7 +3,7 @@ pid '/var/www/votmekeskus/current/tmp/pids/unicorn.pid'
 stderr_path '/var/www/votmekeskus/log/unicorn.log'
 stdout_path '/var/www/votmekeskus/log/unicorn.log'
 listen '/tmp/unicorn.votmekeskus.sock'
-worker_processes 3
+worker_processes 1
 timeout 30
 
 before_fork do |server, worker|
