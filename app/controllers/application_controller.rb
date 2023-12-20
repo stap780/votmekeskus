@@ -36,7 +36,8 @@ protected
 
 # If you have extra params to permit, append them to the sanitizer.
 def configure_permitted_parameters
-  attributes = [:name, :email, :role_id]
+  attributes = [:name, :email, :role_id, :encrypted_password, :password_confirmation, :remember_me]
+  devise_parameter_sanitizer.permit(:sign_in, keys: attributes)
   devise_parameter_sanitizer.permit(:sign_up, keys: attributes)
   devise_parameter_sanitizer.permit(:account_update, keys: attributes)
 end

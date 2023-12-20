@@ -27,6 +27,7 @@ gem 'loofah', '~>2.19.1'
 # gem 'libv8-node', '~> 15.14', '>= 15.14.0.0'
 # gem 'mini_racer'
 gem 'unicorn'
+gem 'certified', '~> 1.0'
 
 gem 'bcrypt_pbkdf', '< 2.0', :require => false
 gem 'ed25519', '~> 1.2', '>= 1.2.4'

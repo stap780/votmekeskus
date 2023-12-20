@@ -261,35 +261,35 @@ class OrdersController < ApplicationController
   end
 
   def place
-    url = 'https://www.smartpost.ee/places.json'
+    url = 'https://itella.ee/places/places.json'
     res = RestClient.get url, {content_type: :json, accept: :json}
     data = JSON.parse(res)
     if data.count > 0
         render json: { items: data, message: 'получили данные' }
       else
-        render json: { error: false, message: 'нет данных https://www.smartpost.ee/places.json' }
+        render json: { error: false, message: 'нет данных https://itella.ee/places/places.json' }
       end
   end
 
   def fiapt
-    url = 'https://www.smartpost.ee/fi_apt.json'
+    url = 'https://itella.ee/places/fi_apt.json'
     res = RestClient.get url, {content_type: :json, accept: :json}
     data = JSON.parse(res)
     if data.count > 0
         render json: { items: data, message: 'получили данные' }
       else
-        render json: { error: false, message: 'нет данных https://www.smartpost.ee/fi_apt.json' }
+        render json: { error: false, message: 'нет данных https://itella.ee/places/fi_apt.json' }
       end
   end
 
   def fipo
-    url = 'https://www.smartpost.ee/fi_po.json'
+    url = 'https://itella.ee/places/fi_po.json'
     res = RestClient.get url, {content_type: :json, accept: :json}
     data = JSON.parse(res)
     if data.count > 0
         render json: { items: data, message: 'получили данные' }
       else
-        render json: { error: false, message: 'нет данных https://www.smartpost.ee/fi_po.json' }
+        render json: { error: false, message: 'нет данных https://itella.ee/places/fi_po.json' }
     end
   end
 
